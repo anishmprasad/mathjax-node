@@ -4,6 +4,14 @@ var express = require('express'),
 	bodyParser = require('body-parser');
 var cors = require('cors');
 var mathJax = require('./mathjax.js');
+var morgan = require('morgan');
+var fs = require('fs');
+var path = require('path');
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
