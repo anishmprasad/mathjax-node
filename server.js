@@ -7,15 +7,16 @@ var mathJax = require('./mathjax.js');
 var morgan = require('morgan');
 var fs = require('fs');
 var path = require('path');
-// var winston = require('winston');
+var expressWinston = require('express-winston');
+var winston = require('winston');
 
-const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, label, prettyPrint } = format;
+// const { createLogger, format, transports } = require('winston');
+// const { combine, timestamp, label, prettyPrint } = format;
 
-const logger = createLogger({
-	format: combine(label({ label: 'mathjax-node' }), timestamp(), prettyPrint()),
-	transports: [new transports.Console()]
-});
+// const logger = createLogger({
+// 	format: combine(label({ label: 'mathjax-node' }), timestamp(), prettyPrint()),
+// 	transports: [new transports.Console()]
+// });
 
 // logger.log({
 // 	level: 'info',
@@ -26,22 +27,22 @@ const logger = createLogger({
 
 // create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+// console.log(logger);
+// app.use(logger);
 
-app.use(logger);
-
-// app.use(
-// 	expressWinston.logger({
-// 		transports: [new winston.transports.Console()],
-// 		format: winston.format.combine(winston.format.colorize(), winston.format.json()),
-// 		meta: true, // optional: control whether you want to log the meta data about the request (default to true)
-// 		msg: 'HTTP {{req.method}} {{req.url}}', // optional: customize the default logging message. E.g. "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}"
-// 		expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
-// 		colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
-// 		ignoreRoute: function(req, res) {
-// 			return false;
-// 		} // optional: allows to skip some log messages based on request and/or response
-// 	})
-// );
+app.use(
+	expressWinston.logger({
+		transports: [new winston.transports.Console()],
+		format: winston.format.combine(winston.format.colorize(), winston.format.json()),
+		meta: true, // optional: control whether you want to log the meta data about the request (default to true)
+		msg: 'HTTP {{req.method}} {{req.url}}', // optional: customize the default logging message. E.g. "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}"
+		expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
+		colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
+		ignoreRoute: function(req, res) {
+			return false;
+		} // optional: allows to skip some log messages based on request and/or response
+	})
+);
 
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }));
