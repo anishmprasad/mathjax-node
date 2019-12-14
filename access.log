@@ -1,0 +1,4 @@
+::1 - - [14/Dec/2019:06:52:12 +0000] "GET /api/v1/collection HTTP/1.1" 404 38 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36"
+::1 - - [14/Dec/2019:06:52:14 +0000] "GET /favicon.ico HTTP/1.1" 404 32 "http://localhost:3003/api/v1/collection" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36"
+::1 - - [14/Dec/2019:06:52:24 +0000] "GET / HTTP/1.1" 404 21 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36"
+::1 - - [14/Dec/2019:06:52:27 +0000] "GET /math HTTP/1.1" 404 25 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36"
