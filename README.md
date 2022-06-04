@@ -1,6 +1,6 @@
 # mathjax-node
 
-Mathml to svg node service
+Mathml to SVG Node Service
 
 # Licence
 
