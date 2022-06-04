@@ -4,4 +4,4 @@ Mathml to svg node service
 
 # Licence
 
-APACHE 2.0
+Apache 2.0
